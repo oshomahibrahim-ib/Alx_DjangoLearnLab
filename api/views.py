@@ -1,17 +1,11 @@
-from rest_framework import generics, viewsets
+from rest_framework import viewsets
 from .models import Book
 from .serializers import BookSerializer
 
-# Existing ListAPIView (optional, keeps the old endpoint)
-class BookList(generics.ListAPIView):
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
-
-# Full CRUD ViewSet
 class BookViewSet(viewsets.ModelViewSet):
     """
-    ViewSet for all CRUD operations on Book model.
-    Provides list, retrieve, create, update, delete automatically.
+    A viewset for viewing and editing Book instances.
+    Provides list, create, retrieve, update, and delete actions.
     """
     queryset = Book.objects.all()
     serializer_class = BookSerializer
